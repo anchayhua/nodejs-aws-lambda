@@ -2,6 +2,14 @@ service: candidate-service
 
 frameworkVersion: "2"
 
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -29,6 +37,20 @@ functions:
       - http:
           path: candidates
           method: post
+  listCandidates:
+    handler: api/candidate.list
+    memorySize: 128
+    description: List all candidates
+    events:
+      - http:
+          path: candidates
+          method: get
+  candidateDetails:
+    handler: api/candidate.get
+    events:
+      - http:
+          path: candidates/{id}
+          method: get
 
 resources:
   Resources:

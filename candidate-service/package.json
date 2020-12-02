@@ -1,0 +1,18 @@
+{
+  "name": "candidate-service",
+  "version": "1.0.0",
+  "description": "serverless create --template aws-nodejs --path candidate-service --name candidate sls deploy     curl -X POST https://e45ylqgbsi.execute-api.us-east-1.amazonaws.com/dev/candidates",
+  "main": "index.js",
+  "scripts": {
+    "develop": "sls offline start --migrate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.802.0",
+    "node-uuid": "^1.4.8",
+    "serverless-http": "^2.6.0"
+  }
+}
