@@ -4,7 +4,10 @@ mkdir serverless-api && cd $_
 npm init -y
 npm i --save aws-sdk body-parser express node-uuid serverless-http cors morgan
 npm i --save serverless-dynamodb-local@0.2.30 serverless-offline
-npm i --save mocha supertest 
+// npm i --save mocha supertest 
+npm install --save-dev serverless-mocha-plugin
+
+sls create function -f general-app --handler index.handler
 
 sls offline start --migrate
     sls dynamodb install

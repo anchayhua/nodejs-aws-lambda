@@ -21,5 +21,8 @@
     "serverless-dynamodb-local": "^0.2.30",
     "serverless-http": "^2.6.0",
     "serverless-offline": "^6.8.0"
+  },
+  "devDependencies": {
+    "serverless-mocha-plugin": "^1.12.0"
   }
 }
