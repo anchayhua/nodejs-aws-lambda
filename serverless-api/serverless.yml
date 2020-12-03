@@ -7,7 +7,7 @@ plugins:
   - serverless-offline
 
 custom:
-  tableName: "todos-${self:provider.stage}"
+  tableName: "generaldb-${self:provider.stage}"
   serverless-offline:
     noPrependStageInUrl: true
 
@@ -26,12 +26,12 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        - { "Fn::GetAtt": ["TodosDynamoDBTable", "Arn"] }
+        - { "Fn::GetAtt": ["GeneralDynamoDBTable", "Arn"] }
   environment:
-    TODOS_TABLE: ${self:custom.tableName}
+    GENERAL_TABLE: ${self:custom.tableName}
 
 functions:
-  todo-app:
+  general-app:
     handler: index.handler
     events:
       - http: ANY /
@@ -39,14 +39,14 @@ functions:
 
 resources:
   Resources:
-    TodosDynamoDBTable:
+    GeneralDynamoDBTable:
       Type: "AWS::DynamoDB::Table"
       Properties:
         AttributeDefinitions:
-          - AttributeName: todoId
+          - AttributeName: generalId
             AttributeType: S
         KeySchema:
-          - AttributeName: todoId
+          - AttributeName: generalId
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1
