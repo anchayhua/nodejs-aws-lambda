@@ -14,8 +14,6 @@ module.exports = {
 
                     if (body) {
 
-                        var listfilmaciones = [];
-
                         resolve({
                             nombre: JSON.parse(body).name,
                             altura: JSON.parse(body).height,
@@ -25,7 +23,14 @@ module.exports = {
                             color_ojo: JSON.parse(body).eye_color,
                             anio_nacimiento: JSON.parse(body).birth_year,
                             genero: JSON.parse(body).gender,
-                            nacionalidad: JSON.parse(body).homeworld
+                            nacionalidad: JSON.parse(body).homeworld,
+                            filmaciones: JSON.parse(body).films,
+                            especies: JSON.parse(body).species,
+                            vehiculos: JSON.parse(body).vehicles,
+                            naves_estelares: JSON.parse(body).starships,
+                            creado: JSON.parse(body).created,
+                            editado: JSON.parse(body).edited,
+                            url: JSON.parse(body).url
                         })
                     } else {
                         resolve(JSON.parse(body))

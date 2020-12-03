@@ -4,8 +4,6 @@ const cors = require('cors');
 
 const morgan = require('morgan');
 
-//require('./config/database');
-
 const app = express();
 
 app.use(cors());

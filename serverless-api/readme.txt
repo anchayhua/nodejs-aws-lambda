@@ -1,13 +1,12 @@
 npm i -g serverless
 serverless login
+
 mkdir serverless-api && cd $_
 npm init -y
 npm i --save aws-sdk body-parser express node-uuid serverless-http cors morgan
 npm i --save serverless-dynamodb-local@0.2.30 serverless-offline
-// npm i --save mocha supertest 
-npm install --save-dev serverless-mocha-plugin
 
-sls create function -f general-app --handler index.handler
+npm install --save-dev serverless-mocha-plugin
 
 sls offline start --migrate
     sls dynamodb install
@@ -18,5 +17,5 @@ curl -H "Content-Type: application/json" -X POST https://b35uuai4il.execute-api.
 curl -H "Content-Type: application/json" -X PUT http://localhost:3000/general -d '{"generalId": "d70e8e75-d815-4d10-85b6-8ff2339eee47", "title": "Data de prueba 2", "done": true}'
 curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/general/328c4de5-57ba-477a-baf1-936b457a63ef
 
-//https://enbonnet.me/article/2/construir-api-nodejs-serverless-con-aws-lambda-y-dyanmodb
-
+// npm i --save mocha supertest 
+// sls create function -f general-app --handler index.handler
