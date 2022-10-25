@@ -1,0 +1,39 @@
+service: serverless-pasarela
+
+frameworkVersion: '2'
+
+provider:   
+  name: aws   
+  runtime: nodejs12.x
+  stage: dev
+  region: eu-west-1
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /hello
+          method: get
+  generartoken:
+    handler: culqi.generartoken
+    events:
+      - httpApi:
+          path: /generartoken
+          method: post
+  procesarcargo:
+    handler: culqi.procesarcargo
+    events:
+      - httpApi:
+          path: /procesarcargo
+          method: post
+  obtenertarjeta:
+    handler: culqi.obtenertarjeta
+    events:
+      - httpApi:
+          path: /obtenertarjeta/{token}
+          method: get
+
+# Agregar estas lineas
+plugins:
+  - serverless-offline
