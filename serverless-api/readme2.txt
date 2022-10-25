@@ -159,3 +159,4 @@
 // module.exports.handler = serverless(app)
 
 // //https://enbonnet.me/article/2/construir-api-nodejs-serverless-con-aws-lambda-y-dyanmodb
+// //https://www.trendmicro.com/de_de/devops/22/c/how-to-build-a-serverless-api-with-lambda-and-node-js.html
