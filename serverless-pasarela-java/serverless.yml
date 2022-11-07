@@ -1,0 +1,29 @@
+service: aws-java-simple-http-endpoint
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: java8
+
+package:
+  artifact: build/distributions/aws-java-simple-http-endpoint.zip
+
+functions:
+  generartoken:
+    handler: com.serverless.generartoken
+    events:
+      - httpApi:
+          path: /generartoken
+          method: post
+  procesarcargo:
+    handler: com.serverless.procesarcargo
+    events:
+      - httpApi:
+          path: /procesarcargo
+          method: post
+  obtenertarjeta:
+    handler: com.serverless.obtenertarjeta
+    events:
+      - httpApi:
+          path: /obtenertarjeta/{token}
+          method: get
