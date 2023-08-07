@@ -1,16 +1,11 @@
-- src
-  - controllers
+- src/
+  - controller/
     - tokenController.ts
-  - database
+  - database/
     - postgres.ts
     - redis.ts
-  - models
+  - models/
     - cardToken.ts
-  - utils
+  - utils/
     - luhnAlgorithm.ts
-  - app.ts
-- tests
-  - tokenController.test.ts
-- package.json
-- tsconfig.json
-- README.MD
+- serverless.yml

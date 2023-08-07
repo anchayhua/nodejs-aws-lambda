@@ -16,5 +16,10 @@ Patrones de arquitectura de software
 - Periféricos conectados a un bus en un sistema informático (unidades maestra y esclava).
 
 npm install aws-sdk aws-lambda aws-serverless-express typescript jest @types/aws-lambda @types/node @types/express pg --save-dev
-npm install aws-lambda-mock-context aws-sdk-mock
-npm install --save-dev @types/jest
+npm install --save-dev aws-lambda-mock-context aws-sdk-mock
+npm install --save-dev jest @types/jest
+npm install --save-dev serverless serverless-offline
+
+
+
+serverless offline start

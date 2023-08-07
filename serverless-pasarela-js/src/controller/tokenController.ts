@@ -1,14 +1,22 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { CardToken } from '../models/cardToken';
-import { generateRandomToken, validateEmail, validateLuhnAlgorithm } from '../utils';
-import { PostgresDatabase, RedisDatabase } from '../database';
+import { generateRandomToken, validateEmail, validateLuhnAlgorithm } from '../utils/luhnAlgorithm';
+import { PostgresDatabase } from '../database/postgres';
+import { RedisDatabase } from '../database/redis';
 
 const db = new PostgresDatabase();
 const redis = new RedisDatabase();
 
 export async function createToken(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {
   try {
-    const { card_number, cvv, expiration_month, expiration_year, email } = JSON.parse(event.body);
+
+    const requestBody = event.body;
+    
+    if (requestBody === null) {
+      throw new Error('Request body is missing');
+    }
+
+    const { card_number, cvv, expiration_month, expiration_year, email } = JSON.parse(requestBody);
 
     if (!validateLuhnAlgorithm(card_number) || !validateEmail(email)) {
       throw new Error('Invalid card data or email');

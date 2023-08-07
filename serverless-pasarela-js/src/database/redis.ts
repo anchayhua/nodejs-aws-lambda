@@ -33,4 +33,13 @@ export class RedisDatabase {
 
     await this.client.query(query, values);
   }
+
+  async cacheToken(token: string, data: string): Promise<void> {
+    await this.client.set(token, data, 'EX', 900); // 900 seconds (15 minutes) expiration
+  }
+
+  async getCachedToken(token: string): Promise<Client | null> {
+    const cachedData = await this.client.get<Client>(token);
+    return cachedData;
+  }
 }

@@ -1,0 +1,23 @@
+service: my-serverless-service
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: local
+
+plugins:
+  - serverless-offline
+
+functions:
+  createToken:
+    handler: src/controller/tokenController.createToken
+    events:
+      - http:
+          path: createToken
+          method: post
+
+  getCardData:
+    handler: src/controller/tokenController.getCardData
+    events:
+      - http:
+          path: getCardData
+          method: get
